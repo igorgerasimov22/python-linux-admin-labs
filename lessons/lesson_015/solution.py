@@ -10,22 +10,41 @@ def print_title():
     """
     print("Список серверов:\n")
 
+def add_empty_line():
+    """
+    Добавляет пустую строку
+    """
+    print()
+
 def load_servers():
     """
     Открываем файл со списком серверов
     """
-    with open("./servers.txt", "r") as file:
-        servers = []
+    servers = [{
+        "name": "",
+        "ip": ""
+    }]
+    servers = []
+    with open("servers.txt", "r") as file:
         for line in file:
-            servers.append(line.strip())
+            line = line.strip()
+            lines = line.split(',')
+            if not line:
+                continue
+            servers.append({"name": lines[0], "ip": lines[1], "ram": lines[2], "cpu": lines[3]})
+            #print(test[1])
         return servers
+
 
 def print_servers(servers):
     """
     Выводим список серверов
     """
-    for server in servers:
-        print(server)
+    for number, server in enumerate(servers, start=1):
+        add_empty_line()
+        for key,value in server.items():
+            print(f"{key}: {value}")
+
 
 print_header()
 print_title()
