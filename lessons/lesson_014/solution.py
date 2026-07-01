@@ -14,6 +14,7 @@ def add_empty_line():
     """
     Функция добавляет пустую строку
     """
+    print()
 
 def create_servers():
     """
@@ -29,8 +30,8 @@ def create_servers():
         servers.append({
             "Имя": input("Введите имя сервера: "),
             "IP": input("Введите ip адрес: "),
-            "RAM": input("Введите объём ОЗУ (GB): "),
-            "CPU": input("Введите кол-во ядер CPU: ")
+            "RAM": int(input("Введите объём ОЗУ (GB): ")),
+            "CPU": int(input("Введите кол-во ядер CPU: "))
         })
     return servers
 
